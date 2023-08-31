@@ -14,88 +14,83 @@ end
 
 
 local keys = {
+   -- misc/useful --
+   { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
+   { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
+   { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
+   { key = 'F4', mods = 'NONE', action = act.ShowTabNavigator },
+   { key = 'F12', mods = 'NONE', action = act.ShowDebugOverlay },
+   { key = 'f', mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
+
+   -- copy/paste --
+   { key = 'c', mods = 'CMD', action = act.CopyTo('Clipboard') },
+   { key = 'v', mods = 'CMD', action = act.PasteFrom('Clipboard') },
+
+   -- tabs --
+   -- tabs: spawn+close
+   { key = 't', mods = mod.SUPER, action = act.SpawnTab('DefaultDomain') },
+   { key = 't', mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'WSL:Ubuntu' }) },
+   { key = 'w', mods = mod.SUPER, action = act.CloseCurrentTab({ confirm = false }) },
+
+   -- tabs: navigation
+   { key = 'h', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
+   { key = 'l', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
+   -- { key = 'j', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
+   -- { key = 'k', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
+   -- { key = 'h', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+   -- { key = 'l', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+
+   -- window --
+   -- spawn windows
+   { key = 'n', mods = mod.SUPER, action = act.SpawnWindow },
+
+   -- panes --
+   -- panes: split panes
+   {
+      key = '-',
+      mods = mod.SUPER,
+      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
+   },
+   {
+      key = [[\]],
+      mods = mod.SUPER,
+      action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
+   },
+
+   -- panes: zoom+close pane
+   { key = 'z', mods = mod.SUPER, action = act.TogglePaneZoomState },
    { key = 'w', mods = 'CTRL', action = wezterm.action.CloseCurrentPane({ confirm = true }) },
-   -- { key = 'w', mods = 'CTRL', action = act.CloseCurrentTab({ confirm = false }) },
-}
-
--- local keys = {
---    -- misc/useful --
---    { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
---    { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
---    { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
---    { key = 'F4', mods = 'NONE', action = act.ShowTabNavigator },
---    { key = 'F12', mods = 'NONE', action = act.ShowDebugOverlay },
---    { key = 'f', mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
-
---    -- copy/paste --
---    { key = 'c', mods = 'CMD', action = act.CopyTo('Clipboard') },
---    { key = 'v', mods = 'CMD', action = act.PasteFrom('Clipboard') },
-
---    -- tabs --
---    -- tabs: spawn+close
---    { key = 't', mods = mod.SUPER, action = act.SpawnTab('DefaultDomain') },
---    { key = 't', mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'WSL:Ubuntu' }) },
---    { key = 'w', mods = mod.SUPER, action = act.CloseCurrentTab({ confirm = false }) },
-
---    -- tabs: navigation
---    { key = 'h', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
---    { key = 'l', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
---    -- { key = 'j', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
---    -- { key = 'k', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
---    -- { key = 'h', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
---    -- { key = 'l', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
-
---    -- window --
---    -- spawn windows
---    { key = 'n', mods = mod.SUPER, action = act.SpawnWindow },
-
---    -- panes --
---    -- panes: split panes
---    {
---       key = '-',
---       mods = mod.SUPER,
---       action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
---    },
---    {
---       key = [[\]],
---       mods = mod.SUPER,
---       action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
---    },
-
---    -- panes: zoom+close pane
---    { key = 'z', mods = mod.SUPER, action = act.TogglePaneZoomState },
---    { key = 'w', mods = 'CTRL', action = wezterm.action.CloseCurrentPane({ confirm = true }) },
---    { key = "q", mods = "CTRL", action = act({ CloseCurrentPane = { confirm = true } }) },
+   { key = "q", mods = "CTRL", action = act({ CloseCurrentPane = { confirm = true } }) },
    
 
---    -- panes: navigation
---    { key = 'k', mods = mod.SUPER, action = act.ActivatePaneDirection('Up') },
---    { key = 'j', mods = mod.SUPER, action = act.ActivatePaneDirection('Down') },
---    { key = '[', mods = mod.SUPER, action = act.ActivatePaneDirection('Left') },
---    { key = ']', mods = mod.SUPER, action = act.ActivatePaneDirection('Right') },
+   -- panes: navigation
+   { key = 'k', mods = mod.SUPER, action = act.ActivatePaneDirection('Up') },
+   { key = 'j', mods = mod.SUPER, action = act.ActivatePaneDirection('Down') },
+   { key = '[', mods = mod.SUPER, action = act.ActivatePaneDirection('Left') },
+   { key = ']', mods = mod.SUPER, action = act.ActivatePaneDirection('Right') },
 
---    -- key-tables --
---    -- resizes fonts
---    {
---       key = 'f',
---       mods = 'CMD',
---       action = act.ActivateKeyTable({
---          name = 'resize_font',
---          one_shot = false,
---          timemout_miliseconds = 1000,
---       }),
---    },
---    -- resize panes
---    {
---       key = 'p',
---       mods = 'CMD',
---       action = act.ActivateKeyTable({
---          name = 'resize_pane',
---          one_shot = false,
---          timemout_miliseconds = 1000,
---       }),
---    },
--- }
+   -- key-tables --
+   -- resizes fonts
+   {
+      key = 'f',
+      mods = 'CMD',
+      action = act.ActivateKeyTable({
+         name = 'resize_font',
+         one_shot = false,
+         timemout_miliseconds = 1000,
+      }),
+   },
+   -- resize panes
+   {
+      key = 'p',
+      mods = 'CMD',
+      action = act.ActivateKeyTable({
+         name = 'resize_pane',
+         one_shot = false,
+         timemout_miliseconds = 1000,
+      }),
+   },
+}
 
 local key_tables = {
    resize_font = {
@@ -125,7 +120,7 @@ local mouse_bindings = {
 }
 
 return {
-   -- disable_default_key_bindings = true,
+   disable_default_key_bindings = true,
    leader = { key = 'Space', mods = 'CTRL' },
    keys = keys,
    key_tables = key_tables,
