@@ -35,14 +35,17 @@ local keys = {
    -- tabs: navigation
    { key = 'h', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
    { key = 'l', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
-   -- { key = 'j', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
-   -- { key = 'k', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
+   { key = 'j', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
+   { key = 'k', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
    -- { key = 'h', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
    -- { key = 'l', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
    -- window --
    -- spawn windows
    { key = 'n', mods = mod.SUPER, action = act.SpawnWindow },
+
+   { key = "s", mods = mod.SUPER_REV, action = act.QuickSelect },
+   { key = 'n', mods = mod.SUPER_REV, action = wezterm.action.ToggleFullScreen },
 
    -- panes --
    -- panes: split panes
@@ -64,8 +67,8 @@ local keys = {
    
 
    -- panes: navigation
-   { key = 'k', mods = mod.SUPER, action = act.ActivatePaneDirection('Up') },
-   { key = 'j', mods = mod.SUPER, action = act.ActivatePaneDirection('Down') },
+   { key = '[', mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Up') },
+   { key = ']', mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Down') },
    { key = '[', mods = mod.SUPER, action = act.ActivatePaneDirection('Left') },
    { key = ']', mods = mod.SUPER, action = act.ActivatePaneDirection('Right') },
 
