@@ -20,7 +20,7 @@ local keys = {
    { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
    { key = 'F4', mods = 'NONE', action = act.ShowTabNavigator },
    { key = 'F12', mods = 'NONE', action = act.ShowDebugOverlay },
-   { key = 'f', mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
+   { key = 'f', mods = mod.SUPER_REV, action = act.Search({ CaseInSensitiveString = '' }) },
 
    -- copy/paste --
    { key = 'c', mods = 'CMD', action = act.CopyTo('Clipboard') },
