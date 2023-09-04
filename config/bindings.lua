@@ -62,8 +62,8 @@ local keys = {
 
    -- panes: zoom+close pane
    { key = 'z', mods = mod.SUPER, action = act.TogglePaneZoomState },
-   { key = 'w', mods = 'CTRL', action = wezterm.action.CloseCurrentPane({ confirm = true }) },
-   { key = "q", mods = "CTRL", action = act({ CloseCurrentPane = { confirm = true } }) },
+   -- { key = 'w', mods = 'CTRL', action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+   -- { key = "q", mods = "CTRL", action = act({ CloseCurrentPane = { confirm = true } }) },
    
 
    -- panes: navigation
